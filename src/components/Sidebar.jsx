@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { FaInbox, FaRocket, FaCog, FaUsers, FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { FaInbox, FaRocket, FaCog, FaUsers, FaBars, FaTimes, FaSignOutAlt } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const closeSidebar = () => setIsOpen(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    navigate("/");
+  };
 
   return (
     <>
@@ -25,23 +31,36 @@ const Sidebar = () => {
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:flex
         `}
       >
-        <div className="flex flex-col items-center">
-          {/* Logo */}
-          <div className="mb-10">
-            <img
-              src="/Group-3907.png"
-              alt="MySite Logo"
-              className="h-11 cursor-pointer"
-            />
+        <div className="flex flex-col justify-between h-full w-full">
+          <div>
+            {/* Logo */}
+            <div className="mb-10 flex justify-center">
+              <img
+                src="/Group-3907.png"
+                alt="MySite Logo"
+                className="h-11 cursor-pointer"
+              />
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex flex-col gap-2 w-full">
+              <SidebarItem icon={<FaInbox />} label="Projects" to="/projects" onClick={closeSidebar} />
+              <SidebarItem icon={<FaUsers />} label="Clients" to="/clients" onClick={closeSidebar} />
+              <SidebarItem icon={<FaRocket />} label="Blog Uploads" to="/blogs" onClick={closeSidebar} />
+              <SidebarItem icon={<FaCog />} label="Enquiries" to="/enquiries" onClick={closeSidebar} />
+            </nav>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex flex-col gap-2 w-full">
-            <SidebarItem icon={<FaInbox />} label="Projects" to="/projects" onClick={closeSidebar} />
-            <SidebarItem icon={<FaUsers />} label="Clients" to="/clients" onClick={closeSidebar} />
-            <SidebarItem icon={<FaRocket />} label="Blog Uploads" to="/blogs" onClick={closeSidebar} />
-            <SidebarItem icon={<FaCog />} label="Enquiries" to="/enquiries" onClick={closeSidebar} />
-          </nav>
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="mt-6 flex items-center gap-3 text-red-600 px-4 py-2 rounded-md hover:bg-red-100 transition w-full"
+          >
+           
+            <FaSignOutAlt className="text-lg" />
+            <span>Logout</span>
+           
+          </button>
         </div>
       </aside>
     </>
