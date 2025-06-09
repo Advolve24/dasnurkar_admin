@@ -300,7 +300,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
         <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-between gap-4">
           <button
             type="submit"
-            className="flex-1 bg-[#605e5e] hover:bg-[#141414] text-white text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
+            className="flex-1 border border-grey-700  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
           >
             {existingData ? 'Update Project' : 'Submit Project'}
           </button>
@@ -308,7 +308,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
+              className="flex-1 border border-grey-700  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
             >
               Cancel
             </button>
