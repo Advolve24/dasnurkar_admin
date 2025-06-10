@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import { FaEye } from "react-icons/fa";
 
 const EnquiriesPage = () => {
   const [enquiries, setEnquiries] = useState([]);
+  const [selectedEnquiry, setSelectedEnquiry] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
@@ -34,11 +37,9 @@ const EnquiriesPage = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 w-full">
-     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 text-center sm:text-left">
-        <h2 className="text-xl sm:text-2xl font-semibold" style={{ fontFamily: "FrieghtNeo" }}>
-          Enquiries
-        </h2>
+    <div className="p-4 sm:p-6 md:p-8 w-full" style={{ fontFamily: "Montserrat" }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 text-center sm:text-left">
+        <h2 className="text-xl sm:text-2xl font-semibold">Enquiries</h2>
       </div>
 
       {loading ? (
@@ -46,26 +47,35 @@ const EnquiriesPage = () => {
       ) : error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : (
-        <div className="overflow-x-auto" style={{ fontFamily: "Gothic" }}>
+        <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300 text-sm md:text-base">
             <thead>
               <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-2">No</th>
                 <th className="border border-gray-300 p-2">Date</th>
                 <th className="border border-gray-300 p-2">Name</th>
                 <th className="border border-gray-300 p-2">Phone</th>
-                <th className="border border-gray-300 p-2">Email</th>
-                <th className="border border-gray-300 p-2">Note</th>
+                <th className="border border-gray-300 p-2">View</th>
                 <th className="border border-gray-300 p-2">Delete</th>
               </tr>
             </thead>
             <tbody>
               {enquiries.map((enquiry, index) => (
                 <tr key={enquiry._id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 p-2 text-center"> {new Date(enquiry.createdAt).toLocaleDateString()}</td>
+                  <td className="border border-gray-300 p-2 text-center">{index + 1}</td>
+                  <td className="border border-gray-300 p-2 text-center">
+                    {new Date(enquiry.createdAt).toLocaleDateString()}
+                  </td>
                   <td className="border border-gray-300 p-2 text-center">{enquiry.name}</td>
                   <td className="border border-gray-300 p-2 text-center">{enquiry.phone}</td>
-                  <td className="border border-gray-300 p-2 text-center">{enquiry.email}</td>
-                  <td className="border border-gray-300 p-2 text-center">{enquiry.note}</td>
+                  <td className="border border-gray-300 p-2 text-center">
+                    <button
+                      onClick={() => setSelectedEnquiry(enquiry)}
+                      className="text-blue-600 hover:underline"
+                    >
+                      <FaEye />
+                    </button>
+                  </td>
                   <td className="border border-gray-300 p-2 text-center">
                     <button
                       onClick={() => handleDelete(enquiry._id)}
@@ -85,6 +95,53 @@ const EnquiriesPage = () => {
               )}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Modal for Viewing Enquiry Details */}
+      {selectedEnquiry && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 px-4 py-6 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-lg w-full sm:w-4/5 md:w-3/5 lg:w-1/2 max-h-[90vh] overflow-y-auto relative p-4 sm:p-6">
+            {/* Header with Close Button */}
+            <div className="sticky top-0 z-10 bg-white flex justify-between items-center border-b pb-2 mb-4">
+              <h2 className="text-lg sm:text-xl font-semibold">Enquiry Details</h2>
+              <button
+                onClick={() => setSelectedEnquiry(null)}
+                className="text-gray-600 hover:text-black text-2xl"
+                aria-label="Close modal"
+              >
+                <IoCloseCircleOutline />
+              </button>
+            </div>
+
+            {/* Detail Form Layout */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base">
+              <div>
+                <label className="font-semibold block">Name</label>
+                <p className="border border-gray-300 rounded p-2">{selectedEnquiry.name}</p>
+              </div>
+              <div>
+                <label className="font-semibold block">Phone</label>
+                <p className="border border-gray-300 rounded p-2">{selectedEnquiry.phone}</p>
+              </div>
+              <div>
+                <label className="font-semibold block">Email</label>
+                <p className="border border-gray-300 rounded p-2">{selectedEnquiry.email}</p>
+              </div>
+              <div>
+                <label className="font-semibold block">Date</label>
+                <p className="border border-gray-300 rounded p-2">
+                  {new Date(selectedEnquiry.createdAt).toLocaleString()}
+                </p>
+              </div>
+              <div className="sm:col-span-2">
+                <label className="font-semibold block">Note</label>
+                <p className="border border-gray-300 rounded p-2 whitespace-pre-line">
+                  {selectedEnquiry.note}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

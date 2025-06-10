@@ -58,12 +58,12 @@ const ClientsPage = () => {
   };
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 w-full pt-4">
+    <div className="px-4 sm:px-6 md:px-8 w-full pt-4"  style={{ fontFamily: 'Montserrat' }}>
       <div
         className="flex flex-col items-center sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0"
         style={{ paddingLeft: "0.5rem", paddingRight: "0.5rem" }}
       >
-        <h2 className="text-xl sm:text-2xl font-semibold" style={{ fontFamily: "FrieghtNeo" }}>
+        <h2 className="text-xl sm:text-2xl font-semibold"  style={{ fontFamily: 'Montserrat' }}>
           Clients
         </h2>
 
@@ -103,7 +103,7 @@ const ClientsPage = () => {
       ) : error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : (
-        <div className="overflow-x-auto" style={{ fontFamily: "FrieghtNeo" }}>
+        <div className="overflow-x-auto"  style={{ fontFamily: 'Montserrat' }}>
           <table className="min-w-full border-collapse border border-gray-300 text-sm md:text-base">
             <thead>
               <tr className="bg-gray-100">

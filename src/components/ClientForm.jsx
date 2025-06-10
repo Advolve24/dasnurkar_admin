@@ -4,6 +4,7 @@ function ClientForm({ clientData = null, onSuccess = () => {}, onClose = () => {
   const [clientName, setClientName] = useState('');
   const [logo, setLogo] = useState(null);
   const [description, setDescription] = useState('');
+    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/clients';
 
   useEffect(() => {
     if (clientData) {
@@ -23,8 +24,8 @@ function ClientForm({ clientData = null, onSuccess = () => {}, onClose = () => {
     try {
       const response = await fetch(
         clientData
-          ? `http://localhost:3000/api/clients/${clientData._id}`
-          : 'http://localhost:3000/api/clients',
+          ? `${baseUrl}/api/clients/${clientData._id}`
+          : `${baseUrl}/api/clients`,
         {
           method: clientData ? 'PUT' : 'POST',
           body: data,
@@ -45,7 +46,7 @@ function ClientForm({ clientData = null, onSuccess = () => {}, onClose = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6"  style={{ fontFamily: 'Montserrat' }}>
       <div>
         <label className="block mb-1 font-medium">Client Name</label>
         <input

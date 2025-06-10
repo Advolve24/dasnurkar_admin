@@ -57,7 +57,7 @@ const BlogListPage = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 w-full">
+    <div className="p-4 sm:p-6 md:p-8 w-full"  style={{ fontFamily: 'Montserrat' }}>
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0">
         <h2
           className="text-xl sm:text-2xl font-semibold w-full text-center sm:text-left"
@@ -77,24 +77,34 @@ const BlogListPage = () => {
       </div>
 
       {showFormModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 px-4 sm:px-6">
-          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full sm:w-4/5 md:w-3/5 lg:w-2/5 max-h-screen overflow-y-auto relative">
-            <button
-              onClick={handleFormClose}
-              className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl"
-            >
-              <IoCloseCircleOutline />
-            </button>
-            <h2 className="text-lg sm:text-xl font-semibold mb-4">
-              {editingBlog ? "Edit Blog" : "Add New Blog"}
-            </h2>
-            <BlogForm
-              blogData={editingBlog}
-              onSuccess={handleFormSuccess}
-              onClose={handleFormClose}
-            />
-          </div>
-        </div>
+       <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 px-4 sm:px-6">
+  <div className="bg-white rounded-lg shadow-lg w-full sm:w-4/5 md:w-3/5 lg:w-2/3 max-h-[90vh] flex flex-col">
+    
+    {/* Sticky Header with Close Button */}
+    <div className="sticky top-0 bg-white z-20 flex justify-between items-center p-2 sm:p-4 border-b">
+      <h2 className="text-lg sm:text-xl font-semibold">
+        {editingBlog ? "Edit Blog" : "Add New Blog"}
+      </h2>
+      <button
+        onClick={handleFormClose}
+        className="text-black/80 hover:text-black text-2xl"
+        aria-label="Close modal"
+      >
+        <IoCloseCircleOutline />
+      </button>
+    </div>
+
+    {/* Scrollable Form Section */}
+    <div className="overflow-y-auto px-4 sm:px-6 pb-4 sm:pb-6">
+      <BlogForm
+        blogData={editingBlog}
+        onSuccess={handleFormSuccess}
+        onClose={handleFormClose}
+      />
+    </div>
+  </div>
+</div>
+
       )}
 
       {loading ? (
@@ -102,7 +112,7 @@ const BlogListPage = () => {
       ) : error ? (
         <p className="text-center text-red-500">{error}</p>
       ) : (
-        <div className="overflow-x-auto" style={{ fontFamily: "FrieghtNeo" }}>
+        <div className="overflow-x-auto"  style={{ fontFamily: 'Montserrat' }}>
           <table className="min-w-full border-collapse border border-gray-300 text-sm md:text-base">
             <thead>
               <tr className="bg-gray-100">

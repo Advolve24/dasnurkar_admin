@@ -21,6 +21,8 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
   // Create previews for newSubImages
   const newSubImagesPreviews = newSubImages.map((file) => URL.createObjectURL(file));
 
+   const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000/api/blogs';
+
   useEffect(() => {
     if (existingData) {
       setFormData({
@@ -104,10 +106,10 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
 
     try {
       const response = existingData
-        ? await axios.put(`http://localhost:3000/api/projects/${existingData._id}`, data, {
+        ? await axios.put(`${baseUrl}/api/projects/${existingData._id}`, data, {
             headers: { 'Content-Type': 'multipart/form-data' },
           })
-        : await axios.post('http://localhost:3000/api/projects', data, {
+        : await axios.post(`${baseUrl}/api/projects`, data, {
             headers: { 'Content-Type': 'multipart/form-data' },
           });
 
@@ -121,7 +123,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
   };
 
   return (
-    <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-white rounded-lg border font-sans">
+    <div className="w-full max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-white rounded-lg border font-sans"  style={{ fontFamily: 'Montserrat' }}>
       <form onSubmit={handleSubmit} encType="multipart/form-data" className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Title */}
         <div>

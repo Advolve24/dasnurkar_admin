@@ -31,7 +31,7 @@ const Sidebar = () => {
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:flex
         `}
       >
-        <div className="flex flex-col justify-between h-full w-full">
+        <div className="flex flex-col justify-between h-full w-full"  style={{ fontFamily: 'Montserrat' }}>
           <div>
             {/* Logo */}
             <div className="mb-10 flex justify-center">

@@ -22,7 +22,7 @@ const LoginPage = () => {
 
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#fff9f5] via-[#f2e5dc] to-[#f9f6f2] flex items-center justify-center overflow-hidden px-4">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#fff9f5] via-[#f2e5dc] to-[#f9f6f2] flex items-center justify-center overflow-hidden px-4"  style={{ fontFamily: 'Montserrat' }}>
       {/* Glowing circle background */}
       <div className="absolute -top-10 -left-10 w-80 h-80 bg-pink-200 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
       <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-amber-100 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
