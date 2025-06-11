@@ -133,7 +133,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             value={formData.title}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="w-full border border-[#ebebeb] rounded-md px-3 py-2"
           >
             <option value="">Select Project Title</option>
             <option value="RESIDENTIAL">RESIDENTIAL</option>
@@ -173,7 +173,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="w-full border border-[#ebebeb] rounded-md px-3 py-2"
           />
         </div>
 
@@ -186,7 +186,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             value={formData.client}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="w-full border border-[#ebebeb] rounded-md px-3 py-2"
           />
         </div>
 
@@ -199,7 +199,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             value={formData.location}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="w-full border border-[#ebebeb] rounded-md px-3 py-2"
           />
         </div>
 
@@ -212,7 +212,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             value={formData.size}
             onChange={handleChange}
             required
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            className="w-full border border-[#ebebeb] rounded-md px-3 py-2"
           />
         </div>
 
@@ -224,7 +224,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             name="mainImage"
             accept="image/*"
             onChange={handleMainImageChange}
-            className="block w-full text-sm border border-gray-300 rounded-md px-3 py-2"
+            className="block w-full text-sm border border-[#ebebeb] rounded-md px-3 py-2"
           />
           {previewMainImage && (
             <div className="mt-2 relative inline-block">
@@ -254,7 +254,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             accept="image/*"
             multiple
             onChange={handleSubImagesChange}
-            className="block w-full text-sm border border-gray-300 rounded-md px-3 py-2"
+            className="block w-full text-sm border border-[#ebebeb] rounded-md px-3 py-2"
           />
 
           {(existingSubImages.length > 0 || newSubImages.length > 0) && (
@@ -263,7 +263,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
               {existingSubImages.map((url, i) => (
                 <div
                   key={'existing-' + i}
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 border border-gray-300 rounded overflow-hidden"
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 border border-[#ebebeb] rounded overflow-hidden"
                 >
                   <img src={url} alt={`existing-sub-${i}`} className="w-full h-full object-cover" />
                   <button
@@ -281,7 +281,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
               {newSubImagesPreviews.map((src, i) => (
                 <div
                   key={'new-' + i}
-                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 border border-gray-300 rounded overflow-hidden"
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 border border-[#ebebeb] rounded overflow-hidden"
                 >
                   <img src={src} alt={`new-sub-${i}`} className="w-full h-full object-cover" />
                   <button
@@ -302,7 +302,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
         <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-between gap-4">
           <button
             type="submit"
-            className="flex-1 border border-grey-700  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
+            className="flex-1 border border-[#ebebeb]  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
           >
             {existingData ? 'Update Project' : 'Submit Project'}
           </button>
@@ -310,7 +310,7 @@ function ProjectForm({ existingData = null, onSuccess, onCancel }) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 border border-grey-700  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
+              className="flex-1 border border-[#ebebeb]  text-black text-[1rem] sm:text-[1.1rem] md:text-[1.2rem] py-2 px-4 rounded-md transition"
             >
               Cancel
             </button>

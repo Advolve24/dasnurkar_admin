@@ -61,7 +61,7 @@ const BlogListPage = () => {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0">
         <h2
           className="text-xl sm:text-2xl font-semibold w-full text-center sm:text-left"
-          style={{ fontFamily: "FrieghtNeo" }}
+         
         >
           Blogs
         </h2>
@@ -115,35 +115,35 @@ const BlogListPage = () => {
         <div className="overflow-x-auto"  style={{ fontFamily: 'Montserrat' }}>
           <table className="min-w-full border-collapse border border-gray-300 text-sm md:text-base">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 p-2">No</th>
-                <th className="border border-gray-300 p-2">Main Image</th>
-                <th className="border border-gray-300 p-2">Title</th>
-                <th className="border border-gray-300 p-2">Date</th>
-                <th className="border border-gray-300 p-2">Edit</th>
-                <th className="border border-gray-300 p-2">Delete</th>
+              <tr className="bg-[#f0f0f0]">
+                <th className="border border-[#ebebeb] p-2">No</th>
+                <th className="border border-[#ebebeb] p-2">Main Image</th>
+                <th className="border border-[#ebebeb] p-2">Title</th>
+                <th className="border border-[#ebebeb] p-2">Date</th>
+                <th className="border border-[#ebebeb] p-2">Edit</th>
+                <th className="border border-[#ebebeb] p-2">Delete</th>
               </tr>
             </thead>
             <tbody>
               {blogs.map((blog, index) => (
                 <tr key={blog._id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     {index + 1}
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <img
                       src={blog.mainImage}
                       alt={blog.title}
                       className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded mx-auto"
                     />
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     {blog.title}
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     {new Date(blog.date).toLocaleDateString()}
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <button
                       onClick={() => handleEdit(blog)}
                       className="text-blue-600 hover:underline"
@@ -151,7 +151,7 @@ const BlogListPage = () => {
                       <FiEdit />
                     </button>
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <button
                       onClick={() => handleDelete(blog._id)}
                       className="text-red-600"
@@ -165,7 +165,7 @@ const BlogListPage = () => {
                 <tr>
                   <td
                     colSpan="6"
-                    className="border border-gray-300 p-4 text-center text-gray-500"
+                    className="border border-[#ebebeb] p-4 text-center text-gray-500"
                   >
                     No blogs found.
                   </td>

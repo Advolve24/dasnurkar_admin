@@ -105,7 +105,7 @@ function ClientForm({ clientData = null, onSuccess = () => {}, onClose = () => {
 
       <button
         type="submit"
-        className="w-full bg-black hover:bg-black text-white py-2 rounded-md text-lg"
+        className="w-full text-black border border-grey-600 py-2 rounded-md text-lg"
       >
         {clientData ? 'Update Client' : 'Add Client'}
       </button>

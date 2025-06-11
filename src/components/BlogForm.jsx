@@ -186,7 +186,7 @@ function BlogForm({ blogData = null, onSuccess = () => {}, onClose = () => {} })
     <div className="col-span-1 md:col-span-2">
       <button
         type="submit"
-        className="w-full bg-gray-700 hover:bg-gray-900 text-white py-2 rounded-md text-lg"
+        className="w-full border-[#ebebeb] border text-black py-2 rounded-md text-lg"
       >
         Submit Blog
       </button>

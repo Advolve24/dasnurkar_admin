@@ -4,6 +4,7 @@ import ProjectForm from "../components/ProjectForm";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 const ProjectsPage = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const ProjectsPage = () => {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0">
         <h2
           className="text-xl sm:text-2xl font-semibold w-full text-center sm:text-left"
-          style={{ fontFamily: "FrieghtNeo" }}
+          
         >
           Projects
         </h2>
@@ -88,15 +89,19 @@ const ProjectsPage = () => {
       {showFormModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 px-4 sm:px-6">
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 w-full sm:w-4/5 md:w-3/5 lg:w-2/3 max-h-[90vh] overflow-y-auto relative">
-            <button
-              onClick={handleFormClose}
-              className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl"
-            >
-              &times;
-            </button>
-            <h2 className="text-lg sm:text-xl font-semibold mb-4">
-              {editingProject ? "Edit Project" : "Add New Project"}
-            </h2>
+           <div className="sticky top-0 bg-white z-20 flex justify-between items-center p-2 sm:p-4 ">
+                 <h2 className="text-lg sm:text-xl font-semibold">
+                   {editingProject ? "Edit Project" : "Add New Project"}
+                 </h2>
+                 <button
+                   onClick={handleFormClose}
+                   className="text-black/80 hover:text-black text-2xl"
+                   aria-label="Close modal"
+                 >
+                   <IoCloseCircleOutline />
+                 </button>
+               </div>
+           
             <ProjectForm
               existingData={editingProject}
               onSuccess={handleFormSuccess}
@@ -112,29 +117,29 @@ const ProjectsPage = () => {
         <p className="text-center text-red-500">{error}</p>
       ) : (
         <div className="overflow-x-auto"  style={{ fontFamily: 'Montserrat' }}>
-          <table className="min-w-full border-collapse border border-gray-300 text-sm md:text-base">
+          <table className="min-w-full border-collapse border border-[#ebebeb] text-sm md:text-base">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 p-2">No</th>
-                <th className="border border-gray-300 p-2">Main Image</th>
-                <th className="border border-gray-300 p-2">Project Name</th>
-                <th className="border border-gray-300 p-2">Edit</th>
-                <th className="border border-gray-300 p-2">Delete</th>
+              <tr className="bg-[#f0f0f0]">
+                <th className="border border-[#ebebeb] p-2">No</th>
+                <th className="border border-[#ebebeb] p-2">Main Image</th>
+                <th className="border border-[#ebebeb] p-2">Project Name</th>
+                <th className="border border-[#ebebeb] p-2">Edit</th>
+                <th className="border border-[#ebebeb] p-2">Delete</th>
               </tr>
             </thead>
             <tbody>
               {projects.map((project, index) => (
                 <tr key={project._id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 p-2 text-center">{index + 1}</td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">{index + 1}</td>
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <img
                       src={project.mainImage}
                       alt={project.name}
                       className="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded mx-auto"
                     />
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">{project.name}</td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">{project.name}</td>
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <button
                       onClick={() => handleEdit(project._id)}
                       className="text-blue-600 hover:underline"
@@ -142,7 +147,7 @@ const ProjectsPage = () => {
                       <FiEdit />
                     </button>
                   </td>
-                  <td className="border border-gray-300 p-2 text-center">
+                  <td className="border border-[#ebebeb] p-2 text-center">
                     <button
                       onClick={() => handleDelete(project._id)}
                       className="text-red-600"
@@ -154,7 +159,7 @@ const ProjectsPage = () => {
               ))}
               {projects.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="border border-gray-300 p-4 text-center text-gray-500">
+                  <td colSpan="5" className="border border-[#ebebeb] p-4 text-center text-gray-500">
                     No projects found.
                   </td>
                 </tr>
